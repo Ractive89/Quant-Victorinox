@@ -19,6 +19,8 @@ if __name__ == "__main__":
     cerebro.adddata(data)
     cerebro.addstrategy(KetlerCross)
 
+    #cerebro.optstrategy(KetlerCross,ema=range(10, 20),atr=range(17, 23))
+
     cerebro.broker.setcash(1000.0)
     cerebro.broker.setcommission(commission=0.0001)
     cerebro.addsizer(bt.sizers.PercentSizer, percents=50)

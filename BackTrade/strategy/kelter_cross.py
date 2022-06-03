@@ -9,9 +9,10 @@ class KetlerCross(BaseObject):
         ('atr', 20),
     )
 
+    
     def __init__(self):
-        self.ketler = Ketler(params=self.params)
-        self.close = self.data.close
+        self.ketler = Ketler(ema=self.params.ema,atr=self.params.atr)
+        self.close = self.datas[0].close
 
     def next(self):
         if not self.position:

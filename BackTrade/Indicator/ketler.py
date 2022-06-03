@@ -10,12 +10,10 @@ class Ketler(bt.Indicator):
         lower=dict(_samecolor=True)
     )
 
-    def __init__(self, params):
-        if params == None:
-            params = self.params
-        self.l.expo = bt.talib.EMA(
-            self.data.close, timeperiod=params.ema)
-        self.l.atr = bt.talib.ATR(
-            self.data.high, self.data.low, self.data.close, timeperiod=params.atr)
-        self.l.upper = self.l.expo + self.l.atr
-        self.l.lower = self.l.expo - self.l.atr
+    def __init__(self):
+        self.lines.expo = bt.talib.EMA(
+            self.datas[0].close, timeperiod=self.params.ema)
+        self.lines.atr = bt.talib.ATR(
+            self.datas[0].high, self.datas[0].low, self.datas[0].close, timeperiod=self.params.atr)
+        self.lines.upper = self.lines.expo + self.lines.atr
+        self.lines.lower = self.lines.expo - self.lines.atr
